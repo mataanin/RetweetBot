@@ -6,7 +6,12 @@ define('ACCESS_TOKEN', '');
 define('ACCESS_TOKEN_SECRET', '');
 
 define('USER', 'LStartuper');
+
+/* obligatory both for  hashtag_retweet.php & list_retweet.php */
 define('HASHTAG', 'LTstartups');
+
+/* needed only for retweet_list.php */
+define('USER_LIST', 'lithuanian-startups');
 
 ?>
 
