@@ -4,14 +4,14 @@ Community Hashtag project
 Agenda
 ------
 
-Two simple php scripts that amplify voice of community. Created as an effort to create critical mass of tweets and visibility for lithuanian startups to use common hashtag for good news and startups relevant tweets. Lets see, how does it develop :) Follow #LTstartups.
+Two simple php scripts that amplify voice of community. Created as an effort to create critical mass of tweets and visibility for lithuanian startups to use common hashtag for good news and startups relevant tweets. Lets see, how does it develop :) Follow [#LTstartups](https://twitter.com/#!/search?q=%23LTstartups).
 
 How is it supposed to work?
 ---------------------------
 
 Come up with hashtag name (*warning* it may take a while). Create new tweeter user. Get a few people posting into hashtag. Setup the scripts. Make a list of people, who are supposed to contribute.. wait.. Tweeps from the list will be constantly reminded about the hashtag, as their tweets are retweeted there. Moreover, hashtag is forever not empty. My hypothesis is that it will motivate people to tweet themselves, too.   
 
-Journal for #LTstartups experiment
+Journal for [#LTstartups](https://twitter.com/#!/search?q=%23LTstartups) experiment
 ----------------------------------
 
     3   Dec   Discussion for the hashtag name has started  
