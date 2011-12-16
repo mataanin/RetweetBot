@@ -1,0 +1,17 @@
+
+
+This is simple php script that allows to set up twitter bot, retweeting everything in a particular hashtag. Should be useful for community hashtags -- after user gets followers, voice of community is amplified. 
+
+Requirements:
+* sqlite
+* php pdo sqlite3 extension
+* php curl extension
+
+Installation:
+1. git clone git://github.com/mataanin/RetweetBot.git
+2. create an application at https://dev.twitter.com/apps and generate access token for Read & Write.
+3. cp config.php.example config.php
+4. edit config.php and fill credentials from https://dev.twitter.com/ as well as your channel and username
+5. setup cron job via your hosting provider or using the crontab
+6. ...
+7. profit 
