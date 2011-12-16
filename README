@@ -23,7 +23,7 @@ Installation:
 1. git clone git://github.com/mataanin/RetweetBot.git
 2. create an application at https://dev.twitter.com/apps and generate access token for Read & Write.
 3. cp config.php.example config.php
-4. edit config.php and fill credentials from https://dev.twitter.com/ as well as your channel and username
+4. edit config.php and fill credentials from https://dev.twitter.com/ as well as your hashtag, list name and username
 5. setup cron job via your hosting provider or using the crontab
 6. ...
 7. profit 
