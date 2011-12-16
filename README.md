@@ -14,11 +14,11 @@ Come up with hashtag name (*warning* it may take a while). Create new tweeter us
 Journal for #LTstartups experiment
 ----------------------------------
 
- 3   Dec   Discussion for the hashtag name has started  
- 8   Dec   1st name chosen
- 11  Dec   Dammit! We forgot to use the urban dictionary.
- 15  Dec   Pivot to another name.
- 16  Dec   Scripts put on a crontab
+    3   Dec   Discussion for the hashtag name has started  
+    8   Dec   1st name chosen
+    11  Dec   Dammit! We forgot to use the urban dictionary.
+    15  Dec   Pivot to another name.
+    16  Dec   Scripts put on a crontab
 
 Requirements
 ------------
