@@ -1,6 +1,7 @@
 <?php
 require_once('twitteroauth/twitteroauth.php');
 require_once('config.php');
+require_once('database.php');
 
 $conn = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
 
@@ -28,17 +29,4 @@ function retweet_hashtag($name, $num=10) {
         save_tweet($item->id);
     }
 }
-
-function tweet_retweeted($id) {
-   global $dbh;
-   $res = $dbh->query("SELECT COUNT(*) FROM tweets WHERE id=".$id);
-
-   return $res->fetchColumn() > 0;
-}
-
-function save_tweet($id) {
-   global $dbh;
-   return $dbh->query("INSERT INTO tweets(id) VALUES(".$id.")");
-}
-
 ?>

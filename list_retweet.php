@@ -21,13 +21,9 @@ function retweet_list($username, $list_name, $num=10) {
             + strlen(" RT @{$item->user->name} ") ;
         $can_be_padded = 140 <= $new_text_len;
 
-
-        echo $item->text;
         if ( $is_rt OR $is_reply OR $can_be_padded OR tweet_retweeted($item->id)) {
-            echo ' NOT <br />'."\n";
             continue;
         }
-            echo $num .' YES <br />'."\n";
         
         if ($num-- <= 0) {
             return;
