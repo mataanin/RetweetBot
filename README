@@ -1,6 +1,7 @@
 
 
-This is simple php script that allows to set up twitter bot, retweeting everything in a particular hashtag. Should be useful for community hashtags -- after user gets followers, voice of community is amplified. 
+This is simple php script that allows to set up twitter bot, retweeting everything in a particular hashtag. 
+Should be useful for community hashtags -- create another user, setup this script and after user gets followers, voice of community is amplified. 
 
 Requirements:
 * sqlite
