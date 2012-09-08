@@ -25,17 +25,11 @@ function retweet_list($username, $list_name, $num=10) {
             continue;
         }
         
-        $text = "RT @{$item->user->name} " . $item->text;
-
-        $params = array(
-            'status' => $text,
-            'in_reply_to_status_id' => $item->id,
-        );
-        $conn->post('http://api.twitter.com/1/statuses/update.json', $params);
+		echo "Retweeting " . $item->id . "\n";
+ 
+        $conn->post('http://api.twitter.com/1.1/statuses/retweet/'.$item->id.'.json');
            
         save_tweet($item->id);
-		
-		echo "Tweeted " . $item->id . "\n";
 		
         if ($num-- <= 0) {
             break;

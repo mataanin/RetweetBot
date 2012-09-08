@@ -3,8 +3,6 @@ require_once('twitteroauth/twitteroauth.php');
 require_once('config.php');
 require_once('database.php');
 
-
-
 $conn = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
 
 try {
@@ -24,14 +22,20 @@ function retweet_hashtag($name, $num=10) {
     foreach($chronological as $item) {
         if ($item->from_user == USER OR 
 			tweet_retweeted($item->id) OR 
-			$num-- <= 0 OR
 			in_array($item->from_user, $blacklist)) {
             continue;
         }
+		
  
-        $conn->post('http://api.twitter.com/1/statuses/retweet/'.$item->id.'.json');
+		echo "Retweeting " . $item->id . "\n";
+ 
+        $conn->post('http://api.twitter.com/1.1/statuses/retweet/'.$item->id.'.json');
            
         save_tweet($item->id);
+		
+		if (--$num <= 0) {
+			break;
+		}
     }
 }
 ?>
