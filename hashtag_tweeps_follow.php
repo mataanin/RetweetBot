@@ -15,15 +15,15 @@ $authors = latest_tweeps(HASHTAG);
 
 $following = following(USER);
 
-foreach($authors as $id) {
+foreach($authors as $tweep) {
 
-    if (!in_array($id, $following)) {
+    if (!in_array($tweep['id'], $following)) {
         $params = array(
-            'user_id' => $id,
+            'user_id' => $tweep['id'],
             'follow' => true,
         );        
 
-		echo "Started following @" . $id . "\n";
+		echo "Started following " . $tweep['name'] . "\n";
 		
         $conn->post("http://api.twitter.com/1/friendships/create.json", $params);
     }
@@ -32,7 +32,9 @@ foreach($authors as $id) {
 function following($username) {
     global $conn;
 
-    $res = $conn->get("https://api.twitter.com/1/followers/ids.json?cursor=-1&screen_name=" . $username);
+    $res = $conn->get("https://api.twitter.com/1.1/friends/ids.json?cursor=-1&screen_name=" . $username);
+
+	
 
     return $res->ids;
 } 
@@ -51,7 +53,7 @@ function latest_tweeps($name) {
             continue;
         }
 		
-        $authors[] = $item->from_user_id;
+        $authors[] = array('id' => $item->from_user_id, 'name' => $item->from_user);
     }
 
 
