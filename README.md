@@ -15,10 +15,11 @@ How is it supposed to work?
 
 Come up with hashtag name (*warning* it may take a while). Create new tweeter user. Get a few people posting into hashtag. Setup the scripts. Make a list of people, who are supposed to contribute.. wait.. 
 
-Features
-	1. Retweets not blacklisted tweeps in the hashtag
-	2. Retweets startups from the list
-	3. Auto-follows tweeps who use the hashtag
+Features:
+
+    1. Retweets not blacklisted tweeps in the hashtag
+    2. Retweets startups from the list
+    3. Auto-follows tweeps who use the hashtag
 
 
 Journal for [#LTstartups](https://twitter.com/#!/search?q=%23LTstartups) experiment
