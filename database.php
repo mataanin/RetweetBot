@@ -8,8 +8,7 @@ try {
 function tweet_retweeted($id) {
    global $dbh;
    $res = $dbh->query("SELECT COUNT(*) FROM tweets WHERE id=".$id);
-
-   return $res->fetchColumn() > 0;
+   return ($res->fetchColumn() > 0);
 }
 
 function save_tweet($id) {

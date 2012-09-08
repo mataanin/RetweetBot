@@ -3,6 +3,8 @@ require_once('twitteroauth/twitteroauth.php');
 require_once('config.php');
 require_once('database.php');
 
+
+
 $conn = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
 
 try {
@@ -14,13 +16,16 @@ try {
 retweet_hashtag(HASHTAG, 1);
 
 function retweet_hashtag($name, $num=10) {
-    global $conn;
+    global $conn, $blacklist;
 
     $search = $conn->get("http://search.twitter.com/search.json?q=%23{$name}&amp;result_type=recent&amp;rpp=100&amp;page=1");
 
     $chronological = array_reverse($search->results, true);    
     foreach($chronological as $item) {
-        if ( $item->from_user == USER OR tweet_retweeted($item->id) OR $num-- <= 0) {
+        if ($item->from_user == USER OR 
+			tweet_retweeted($item->id) OR 
+			$num-- <= 0 OR
+			in_array($item->from_user, $blacklist)) {
             continue;
         }
  

@@ -14,7 +14,6 @@ try {
 $authors = latest_tweeps(HASHTAG);
 
 $following = following(USER);
-var_dump($authors, $following);
 
 foreach($authors as $id) {
 
@@ -24,8 +23,9 @@ foreach($authors as $id) {
             'follow' => true,
         );        
 
-
-        var_dump($conn->post("http://api.twitter.com/1/friendships/create.json", $params));
+		echo "Started following @" . $id . "\n";
+		
+        $conn->post("http://api.twitter.com/1/friendships/create.json", $params);
     }
 }
 
@@ -50,7 +50,7 @@ function latest_tweeps($name) {
         if ( $item->from_user == USER OR tweet_retweeted($item->id)) {
             continue;
         }
-        
+		
         $authors[] = $item->from_user_id;
     }
 

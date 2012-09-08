@@ -5,36 +5,27 @@ require_once('database.php');
 
 $conn = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
 
-retweet_list(USER, USER_LIST,  2);
+retweet_list(USER, USER_LIST,  1);
 
 function retweet_list($username, $list_name, $num=10) {
     global $conn;
 
-    $search = $conn->get("https://api.twitter.com/1/lists/statuses.json?slug={$list_name}&owner_screen_name={$username}&per_page=30&page=1");
+    $search = $conn->get("https://api.twitter.com/1/lists/statuses.json?slug={$list_name}&owner_screen_name={$username}&per_page=100&page=1");
 
     $chronological = array_reverse($search, true);    
     foreach($chronological as $item) {
         $is_rt = strpos($item->text, 'RT') OR (boolean)$item->retweeted;
+		$is_in_hashtag = strpos($item->text, '#' . HASHTAG);
         $is_reply = !empty($item->in_reply_to_user_id);
-        $new_text_len = strlen($item->text)
-            + /* hash symbol */ 1 + strlen(HASHTAG) 
-            + strlen(" RT @{$item->user->name} ") ;
-        $can_be_padded = 140 <= $new_text_len;
+        $new_text_len = strlen($item->text);
+            + strlen("RT @{$item->user->name} ") ;
+        $cant_be_padded = 140 <= $new_text_len;
 
-        if ( $is_rt OR $is_reply OR $can_be_padded OR tweet_retweeted($item->id)) {
+        if ( $is_in_hashtag OR $is_rt OR $is_reply OR $cant_be_padded OR (boolean)tweet_retweeted($item->id)) {
             continue;
         }
         
-        if ($num-- <= 0) {
-            return;
-        }
-
         $text = "RT @{$item->user->name} " . $item->text;
-        if (rand(0, 1) == 0) {
-            $text = '#' . HASHTAG . " {$text}";
-        } else {
-            $text = "{$text} #" . HASHTAG;
-        }
 
         $params = array(
             'status' => $text,
@@ -43,6 +34,12 @@ function retweet_list($username, $list_name, $num=10) {
         $conn->post('http://api.twitter.com/1/statuses/update.json', $params);
            
         save_tweet($item->id);
+		
+		echo "Tweeted " . $item->id . "\n";
+		
+        if ($num-- <= 0) {
+            break;
+        }
     }
 }
 ?>
