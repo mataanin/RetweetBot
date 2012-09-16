@@ -11,24 +11,38 @@ try {
     echo $e->getMessage();
 }
 
+$blacklist = $conn->get("https://api.twitter.com/1/lists/members.json?slug=".BLACKLIST."&owner_screen_name=".USER."&cursor=-1");
+
 retweet_hashtag(HASHTAG, 1);
 
+function in_black_list($uid) {
+	global $blacklist;
+
+	foreach($blacklist->users as $user) {
+			
+		if ($user->id === $uid) {
+			return true;
+		}
+	}
+	
+	return false;
+}
+
 function retweet_hashtag($name, $num=10) {
-    global $conn, $blacklist;
+    global $conn, $dbh;
 
     $search = $conn->get("http://search.twitter.com/search.json?q=%23{$name}&amp;result_type=recent&amp;rpp=100&amp;page=1");
 
     $chronological = array_reverse($search->results, true);    
     foreach($chronological as $item) {
+
         if ($item->from_user == USER OR 
 			tweet_retweeted($item->id) OR 
-			in_array($item->from_user, $blacklist)) {
+			in_black_list($item->from_user_id)) {
             continue;
         }
-		
  
 		echo "Retweeting " . $item->id . "\n";
- 
         $conn->post('http://api.twitter.com/1.1/statuses/retweet/'.$item->id.'.json');
            
         save_tweet($item->id);

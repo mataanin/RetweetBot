@@ -9,6 +9,7 @@ Two simple php scripts that amplify voice of community. Created as an effort to 
 Follow 
 	[#LTstartups](https://twitter.com/#!/search?q=%23LTstartups).
 	[lithuanian-startups](https://twitter.com/#!/LStartuper/lithuanian-startups)
+    [Tweeps, who are not retweeted](https://twitter.com/i/#!/LStartuper/ignored-tweeps)
 
 How is it supposed to work?
 ---------------------------
@@ -17,7 +18,7 @@ Come up with hashtag name (*warning* it may take a while). Create new tweeter us
 
 Features:
 
-    1. Retweets not blacklisted tweeps in the hashtag
+    1. Retweets tweeps in the hashtag except for tweeps in ignored list
     2. Retweets startups from the list
     3. Auto-follows tweeps who use the hashtag
 
@@ -25,14 +26,15 @@ Features:
 Journal for [#LTstartups](https://twitter.com/#!/search?q=%23LTstartups) experiment
 ----------------------------------
 
-    3   Dec   Discussion for the hashtag name has started  
-    8   Dec   1st name chosen
+     3  Dec   Discussion for the hashtag name has started  
+     8  Dec   1st name chosen
     11  Dec   Dammit! We forgot to use the urban dictionary.
     15  Dec   Pivot to another name.
     16  Dec   Scripts put on a crontab
 	18	Dec	  Terminated the script due to naming disputes
-	7	Aug	  Hashtag is alive... but full of tweets by organisations and local accelerator
-	8	Aug   Restarting project with a blacklist.
+	 7	Aug	  Hashtag is alive... but full of tweets by organisations and local accelerator
+	 8	Aug   Restarting project with a blacklist.
+    16  Aug   Script works! Moving blacklist into a separate list
 
 Requirements
 ------------
@@ -40,6 +42,7 @@ Requirements
  * sqlite
  * php pdo sqlite3 extension
  * php curl extension
+ * [twitteroauth](https://github.com/abraham/twitteroauth) (included in the repo) 
 
 Installation
 ------------

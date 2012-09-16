@@ -2,7 +2,7 @@
 try {
    $dbh = new PDO("sqlite:database.sdb");
 } catch(PDOException $e) {
-    echo $e->getMessage();
+    $e->getMessage();
 }
 
 function tweet_retweeted($id) {

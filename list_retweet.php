@@ -8,7 +8,7 @@ $conn = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOK
 retweet_list(USER, USER_LIST,  1);
 
 function retweet_list($username, $list_name, $num=10) {
-    global $conn;
+    global $conn, $dbh;
 
     $search = $conn->get("https://api.twitter.com/1/lists/statuses.json?slug={$list_name}&owner_screen_name={$username}&per_page=100&page=1");
 
