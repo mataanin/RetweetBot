@@ -13,10 +13,8 @@ define('HASHTAG', 'LTstartups');
 /* needed only for retweet_list.php */
 define('USER_LIST', 'lithuanian-startups');
 
-/* we are not retweeting tweets of following users in the HASHTAG */
-$blacklist = array(
-	'vilnius_bot' // bot retweeting everything mentioning capital
-);
+/* we are not retweeting tweeps in this list */
+define('BLACKLIST', 'ignored-tweeps');
 
 ?>
 
