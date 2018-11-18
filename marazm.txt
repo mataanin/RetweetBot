@@ -1,1 +1,3 @@
 version.properties
+multiline.test
+asterix*.txt
