@@ -54,3 +54,4 @@ Installation
 5. setup cron job via your hosting provider or using the crontab
 6. ...
 7. profit 
+8. profit! profit! profit!
